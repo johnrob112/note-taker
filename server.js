@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const { notes } = require('./db/db');
-const port = process.env.port || 3001;
+const PORT = process.env.port || 3001;
 
 
 // Middleware for json, string/array, and static files 
@@ -34,7 +34,7 @@ app.post("/api/notes", (req, res) => {
     req.body.id = notes.length.toString();
     const note = createNote(req.body, note);
     res.json(req.body);
-  });
+  })
 
 
 // request to delete a note
@@ -60,6 +60,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
   });
 
-app.listen(port, () => {
-    console.log(`API server now on port 3001!`);
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`);
   });
